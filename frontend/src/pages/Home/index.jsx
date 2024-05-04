@@ -4,11 +4,14 @@ import style from "./index.module.css";
 function Home() {
   return (
     <div>
-      <div>Home</div>
-      <nav className={style.navigation}>
+      <div>Your Stock</div>
+      <div className="logo"><img src="logo.jpg"/></div>
+      
+      
+<nav className={style.navigation}>
         <Link to="/write">write</Link>
         <Link to="/detail">detail</Link>
-        <Link to="/calendar">calendar</Link>
+        <Link to="/calendar">ホーム</Link>
         <Link to="/">home</Link>
       </nav>
     </div>
