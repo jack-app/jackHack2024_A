@@ -7,12 +7,14 @@ import {
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { createContext, useContext } from "react";
+import { getDatabase } from "firebase/database";
 
 const AuthContext = createContext();
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "your-stock-e5280.firebaseapp.com",
+  databaseURL: "https://your-stock-e5280-default-rtdb.firebaseio.com",
   projectId: "your-stock-e5280",
   storageBucket: "your-stock-e5280.appspot.com",
   messagingSenderId: "935535742165",
@@ -60,3 +62,5 @@ export const AuthContextProvider = ({ children }) => {
 export const AuthContextConsumer = () => {
   return useContext(AuthContext);
 };
+
+export const db = getDatabase(app);
