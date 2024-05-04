@@ -1,13 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import App from "./App";
-import About from "./About";
+import Home from "./pages/Home";
+import Write from "./pages/Write";
+import Detail from "./pages/Detail";
+import Calendar from "./pages/Calendar";
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/Write" element={<Write />} />
+        <Route path="/Detail" element={<Detail />} />
+        <Route path="/Calendar" element={<Calendar />} />
       </Routes>
     </BrowserRouter>
   );
