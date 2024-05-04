@@ -11,7 +11,7 @@ import { createContext, useContext } from "react";
 const AuthContext = createContext();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDdAz850rp9P77r0skfmZEEjsewZYBoas8",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "your-stock-e5280.firebaseapp.com",
   projectId: "your-stock-e5280",
   storageBucket: "your-stock-e5280.appspot.com",
