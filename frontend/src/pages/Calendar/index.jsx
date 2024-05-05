@@ -1,21 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./index.module.css";
 import RCalendar from "react-calendar"; //名前の衝突を避けるためにRCalendarとしてimport
 import "react-calendar/dist/Calendar.css";  //カレンダーのCSS
-import { useState } from "react";
+// import { useHistory } from "react-router-dom";
 
 function Calendar() {
-  const [value, setValue] = useState();
+  const navigate = useNavigate();
   const today = new Date().toLocaleDateString();
-
+  const handleDayClick = (date) => {
+    navigate(`/detail?date=${encodeURIComponent(date.toLocaleDateString())}`);
+  };
   return (
     <div>
       <h2 className={style.topDate}>{today}</h2>
       <h2>月間の状況</h2>
       <div className={style.RCalendarContainer}>
         <RCalendar
-          value={value}
-          onClickDay={(e) => { setValue(e); console.log(e); }}
+          onClickDay={(date) => handleDayClick(date)}
         />
       </div>
       <div>
@@ -27,10 +28,7 @@ function Calendar() {
         </div>
         <span className={style.aorichanExplain}>扇のキャラクター アオリちゃん</span>
         <div className={style.rightArrowIcon}>
-          <Link to={{
-            pathname: "/write",
-            state: { date: today }
-          }} >
+          <Link to={`/write?date=${encodeURIComponent(today)}`} >
             <img src="right-arrow-icon.svg" />
           </Link>
         </div>
