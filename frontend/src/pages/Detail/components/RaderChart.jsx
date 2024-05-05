@@ -2,7 +2,7 @@ import { getDiaryDataByDate } from "../../../utils/database";
 import { AuthContextConsumer } from "../../../contexts/AuthContext";
 import { useState } from "react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
-
+import style from "./../index.module.css";
 export default function RaderChartWrapper(){
 
   const { loginUser, userID, login, logout } = AuthContextConsumer();
@@ -49,8 +49,11 @@ export default function RaderChartWrapper(){
 
   if(data.length === 0){
     return (
-      <div>
-        データがありません
+<div className={style.overlap}>
+        <img src="aorichan.png" width="100%" className={style.transparent}/>
+        <div  className={style.overlay}>
+          <p><strong>⚠️データがありません⚠️</strong></p>
+        </div>
       </div>
     );
   }
