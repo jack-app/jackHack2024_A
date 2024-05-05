@@ -1,0 +1,35 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.logo{
+  margin: auto;
+  display: block;
+  object-fit: contain ;
+}
+
+ .logo img{
+  width: 100%;
+  border-radius: 0px ;
+  }
+
+  .login img{
+    width: 100%;
+    border-radius: 0px ;
+    border-style: none;
+    }
+
+  .login{
+    width: 189px;
+    height: 40px;
+    margin: auto;
+    display: block;
+    object-fit: contain;
+    background-image: url(login.png);
+    border-style: none;
+    background-color: #ffe4e4;
+  }
+
+ 
