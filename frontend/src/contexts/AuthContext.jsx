@@ -29,7 +29,6 @@ const provider = new GoogleAuthProvider();
 // eslint-disable-next-line react/prop-types
 export const AuthContextProvider = ({ children }) => {
   const [loginUser, setLoginUser] = useState();
-  const [userID, setUserID] = useState();
 
   useEffect(() => {
     // auth 初期化時にログインユーザ設定
@@ -39,13 +38,11 @@ export const AuthContextProvider = ({ children }) => {
   const login = async () => {
     const result = await signInWithPopup(auth, provider);
     setLoginUser(result.user);
-    result.user.getIdToken().then((token) => setUserID(token));
   };
 
   const logout = async () => {
     await signOut(auth);
     setLoginUser(null);
-    setUserID(null);
   };
 
   // ログイン情報設定したProvider
