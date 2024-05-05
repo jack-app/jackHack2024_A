@@ -1,38 +1,9 @@
 import { Link } from "react-router-dom";
 import style from "./index.module.css";
 import React from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { ResponsiveContainer } from 'recharts';
-
-
-const data = [
-  {
-    subject: '勉強',
-    A: 4,
-    fullMark: 5,
-  },
-  {
-    subject: '健康',
-    A: 3,
-    fullMark: 5,
-  },
-  {
-    subject: '社会性',
-    A: 2,
-    fullMark: 5,
-  },
-  {
-    subject: '社交性',
-    A: 5,
-    fullMark: 5,
-  },
-  {
-    subject: '精神力',
-    A: 0,
-    fullMark: 5,
-  },
-];
+import RaderChartWrapper from "./components/RaderChart";
 
 
 const data2 = [
@@ -46,6 +17,7 @@ const data2 = [
 ];
 
 function Detail() {
+
   return (
     <div>
       {/*
@@ -84,6 +56,7 @@ function Detail() {
         </ResponsiveContainer>
       </div>
 
+      <RaderChartWrapper/>
 
       <div className={style.container}>
         <img src="aorichan.png" width="25%" aspect={1} />
@@ -115,5 +88,7 @@ function Detail() {
       </div> </div>
   );
 }
+
+
 
 export default Detail;
