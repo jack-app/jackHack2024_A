@@ -24,11 +24,11 @@ export default function DecideButton({ text }) {
       loginUser.uid,
       currentDate,
       {
-        study: 0,
-        healthy: 0,
-        sociality: 0,
-        sociability: 0,
-        mental: 0,
+        study: 1,
+        healthy: 2,
+        sociality: 3,
+        sociability: 4,
+        mental: 5,
       },
       text,
       ""
