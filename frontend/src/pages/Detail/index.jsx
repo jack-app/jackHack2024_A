@@ -39,24 +39,8 @@ function Detail() {
       <h2>フィードバック</h2>
       <h3>点数</h3>
       <div className={style.txtbox}>
-        <ResponsiveContainer width="100%" aspect={1.5}>
-          <RadarChart data={data}>
-
-            <PolarGrid />
-            <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis angle={90} domain={[0, 5]} tickCount={6} />
-            <Radar
-              name="chart"
-              dataKey="A"
-              stroke="#8884d8"
-              fill="#8884d8"
-              fillOpacity={0.6}
-            />
-          </RadarChart>
-        </ResponsiveContainer>
+        <RaderChartWrapper/>
       </div>
-
-      <RaderChartWrapper/>
 
       <div className={style.container}>
         <img src="aorichan.png" width="25%" aspect={1} />
