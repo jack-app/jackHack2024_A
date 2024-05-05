@@ -4,21 +4,87 @@
 
 :root {
   /* メインカラー */
-  --main-bg-color:#e8e7e7;
-  --main-dark-color: #6d1919;
-  --main-accent-color: #ff3d61;
+  --bg-color: #ffe4e4;
+  --txt-bg: #fff9f9;
+  --dark-color: #6d1919;
+  --accent-color: #ff3d61;
 
 }
 
+body {
+  /*font-weight: bold;*/
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--dark-color);
+}
 
+h2,
+h3 {
+  background-color: var(--txt-bg);
+  border-left: 5px solid var(--dark-color);
+  padding-left: 10px;
+  /* 枠線とテキストの間に余白を追加 */
+}
 
 .navigation {
   display: flex;
   flex-direction: row;
   gap: 16px;
 }
+
 .container {
+  padding-top: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.txtbox {
+  background-color: var(--txt-bg);
+  padding: 10px;
+  border: 2px solid var(--dark-color);
+  justify-content: center;
+}
+
+img {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--dark-color);
+}
+
+.bubble {
+  margin-left: 5%;
+  width: 70%;
+  position: relative;
+  background-color: var(--txt-bg);
+  /* 吹き出しの背景色 */
+  border: 2px solid var(--dark-color);
+  padding: 10px;
+  /* 吹き出しの内側の余白 */
+  border-radius: 10px;
+  /* 吹き出しの角を丸める */
+  box-sizing: border-box;
+  /* 幅にborderとpaddingを含める */
+}
+
+.bubble:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-right: 15px solid var(--txt-bg);
+  z-index: 2;
+}
+
+.bubble:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -13px;
+  border: 13px solid transparent;
+  border-right: 16px solid var(--dark-color);
+  z-index: 1;
 }
