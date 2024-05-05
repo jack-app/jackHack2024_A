@@ -12,25 +12,17 @@ import {
 const createNewDiary = async (
   user_id,
   date,
-  study,
-  healthy,
-  sociality,
-  sociability,
-  mental,
+  point,
   diary_text,
   diary_feedback
 ) => {
   const diaryRef = ref(db, `diary/${user_id}`);
   const newDiaryRef = push(diaryRef);
   set(newDiaryRef, {
-    date,
-    study,
-    healthy,
-    sociality,
-    sociability,
-    mental,
-    diary_text,
-    diary_feedback,
+    date: date,
+    diary_text: diary_text,
+    diary_feedback: diary_feedback,
+    point: point
   });
 };
 

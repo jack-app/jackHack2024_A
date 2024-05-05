@@ -7,9 +7,6 @@ function Write() {
 
   const [text, setText] = useState("")
 
-  const date = new Date().toLocaleDateString("ja-JP", {year: "numeric",month: "2-digit",
-  day: "2-digit"}).replaceAll('/', '-')
-
   return (
     <div>
       <div className={style.flex}>
@@ -24,7 +21,7 @@ function Write() {
           onChange={(e) => setText(e.target.value)}
         />
         <div className={style.hoge}>
-          <DecideButton text={text} date={date}/>
+          <DecideButton text={text}/>
         </div>
       </center>
     </div>

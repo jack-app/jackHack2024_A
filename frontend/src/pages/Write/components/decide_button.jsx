@@ -3,22 +3,28 @@ import { createNewDiary } from "../../../utils/database";
 import { AuthContextConsumer } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-export default function DecideButton(text, date) {
+export default function DecideButton(text) {
 
-    const { loginUser, userID, login, logout } = AuthContextConsumer();
+    const { loginUser, login, logout } = AuthContextConsumer();
+
+    const date = new Date().toLocaleDateString("ja-JP", {year: "numeric",month: "2-digit",
+    day: "2-digit"}).replaceAll('/', '-')
 
     const navigate = useNavigate();
 
     const save = () => {
+        console.log(text);
         createNewDiary(
-            userID,
+            loginUser.uid,
             date,
-            0,
-            0,
-            0,
-            0,
-            0,
-            text,
+            {
+                study:0,
+                healthy:0,
+                sociality:0,
+                sociability:0,
+                mental:0
+            },
+            text.text,
             "hogehoge"
         );
         navigate("/detail");
