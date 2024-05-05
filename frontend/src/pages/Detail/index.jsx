@@ -31,41 +31,61 @@ function Detail() {
   */}
       <h2>日記</h2>
 
-      <div>
+      <div className={style.txtbox}>
         今日はnodeの環境構築をしました。<br />
         パスが通らなくて腹が立ちました。
       </div>
 
       <h2>フィードバック</h2>
       <h3>点数</h3>
+      <div className={style.txtbox}>
+        <ResponsiveContainer width="100%" aspect={1.5}>
+          <RadarChart data={data}>
+
+            <PolarGrid />
+            <PolarAngleAxis dataKey="subject" />
+            <PolarRadiusAxis angle={90} domain={[0, 5]} tickCount={6} />
+            <Radar
+              name="chart"
+              dataKey="A"
+              stroke="#8884d8"
+              fill="#8884d8"
+              fillOpacity={0.6}
+            />
+          </RadarChart>
+        </ResponsiveContainer>
+      </div>
 
       <RaderChartWrapper/>
 
       <div className={style.container}>
         <img src="aorichan.png" width="25%" aspect={1} />
-        <p>
-          本日は合計15点で、もうちょっと努力が必要だぞ<br />
-          ・・・・
-          特にここをやるともっといいかも！煽っちゃうよ。
+        <div class={style.bubble}>
+          <p>
+            本日は合計15点で、もうちょっと努力が必要だぞ<br />
+            ・・・・<br />
+            特にここをやるともっといいかも！煽っちゃうよ。
           </p>
+        </div>
       </div>
 
       <h3>ウィークリーサマリー</h3>
-      <ResponsiveContainer width="75%" aspect={2}>
-        <LineChart data={data2}>
-          <XAxis dataKey="name" interval={0} />
-          <YAxis domain={[0, 5]} tickCount={6} />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          <Legend />
-          <Line type="linear" dataKey="勉強" stroke="#191970" />
-          <Line type="linear" dataKey="健康" stroke="#ffa500" />
-          <Line type="linear" dataKey="社会性" stroke="#008000" />
-          <Line type="linear" dataKey="社交性" stroke="#7fffd4" />
-          <Line type="linear" dataKey="精神力" stroke="#8b008b" />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+      <div className={style.txtbox}>
+        <ResponsiveContainer width="100%" aspect={2}>
+          <LineChart data={data2}>
+            <XAxis dataKey="name" interval={0} />
+            <YAxis domain={[0, 5]} tickCount={6} />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Tooltip />
+            <Legend />
+            <Line type="linear" dataKey="勉強" stroke="#191970" />
+            <Line type="linear" dataKey="健康" stroke="#ffa500" />
+            <Line type="linear" dataKey="社会性" stroke="#008000" />
+            <Line type="linear" dataKey="社交性" stroke="#7f99d4" />
+            <Line type="linear" dataKey="精神力" stroke="#8b008b" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div> </div>
   );
 }
 
