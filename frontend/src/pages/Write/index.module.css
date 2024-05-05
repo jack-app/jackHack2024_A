@@ -3,3 +3,22 @@
   flex-direction: row;
   gap: 16px;
 }
+
+.inputbox {
+  display: block;
+    width: 350px;
+    height: 600px;
+}
+
+.submitbuttom {
+  display: block;
+}
+
+.hoge{
+  margin: 20px;
+}
+
+
+.flex{
+  display: flex;
+}
