@@ -2,17 +2,21 @@ import { getDiaryDataByDate } from "../../../utils/database";
 import { AuthContextConsumer } from "../../../contexts/AuthContext";
 import { useState } from "react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
-import style from "./../index.module.css";
+import { ResponsiveContainer } from 'recharts';
+
 export default function RaderChartWrapper(){
 
-  const { loginUser, userID, login, logout } = AuthContextConsumer();
+  const { loginUser, login, logout } = AuthContextConsumer();
 
   const [data, setData] = useState([]);
 
   const date = new Date().toLocaleDateString("ja-JP", {year: "numeric",month: "2-digit",
   day: "2-digit"}).replaceAll('/', '-')
 
-  getDiaryDataByDate(userID, date).then((target) => {
+  getDiaryDataByDate(loginUser.uid, date).then((target) => {
+
+    console.log(target)
+
     if (target.length == 0) {
       setData([])
     }
@@ -20,27 +24,27 @@ export default function RaderChartWrapper(){
       setData([
           {
             subject: '勉強',
-            A: target[0].healthy,
+            A: target[0].point.study,
             fullMark: 5,
           },
           {
             subject: '健康',
-            A: target[0].sociality,
+            A: target[0].point.healthy,
             fullMark: 5,
           },
           {
             subject: '社会性',
-            A: target[0].sociability,
+            A: target[0].point.sociality,
             fullMark: 5,
           },
           {
             subject: '社交性',
-            A: target[0].mental,
+            A: target[0].point.sociability,
             fullMark: 5,
           },
           {
             subject: '精神力',
-            A: target[0].mental,
+            A: target[0].point.mental,
             fullMark: 5,
           }
       ])
@@ -49,11 +53,8 @@ export default function RaderChartWrapper(){
 
   if(data.length === 0){
     return (
-<div className={style.overlap}>
-        <img src="aorichan.png" width="100%" className={style.transparent}/>
-        <div  className={style.overlay}>
-          <p><strong>⚠️データがありません⚠️</strong></p>
-        </div>
+      <div>
+        データがありません
       </div>
     );
   }

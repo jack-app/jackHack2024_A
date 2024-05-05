@@ -4,6 +4,8 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { ResponsiveContainer } from 'recharts';
 import RaderChartWrapper from "./components/RaderChart";
+import CommentWrapper from "./components/Comment";
+import FeedBackWrapper from "./components/FeedBack";
 
 
 const data2 = [
@@ -31,10 +33,7 @@ function Detail() {
   */}
       <h2>日記</h2>
 
-      <div className={style.txtbox}>
-        今日はnodeの環境構築をしました。<br />
-        パスが通らなくて腹が立ちました。
-      </div>
+      <CommentWrapper />
 
       <h2>フィードバック</h2>
       <h3>点数</h3>
@@ -42,16 +41,7 @@ function Detail() {
         <RaderChartWrapper/>
       </div>
 
-      <div className={style.container}>
-        <img className={style.circle} src="aorichan.png" width="25%"/>
-        <div className={style.bubble}>
-          <p>
-            本日は合計15点で、もうちょっと努力が必要だぞ<br />
-            ・・・・<br />
-            特にここをやるともっといいかも！煽っちゃうよ。
-          </p>
-        </div>
-      </div>
+      <FeedBackWrapper />
 
       <h3>ウィークリーサマリー</h3>
       <div className={style.txtbox}>
