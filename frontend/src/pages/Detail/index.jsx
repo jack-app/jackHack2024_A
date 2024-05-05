@@ -40,8 +40,9 @@ function Detail() {
         if (res.length === 0) {
           setData([]);
         } else {
-          setData(res[0]);
-          console.log(res[0]);
+          const dataLength = res.length;
+          setData(res[dataLength - 1]);
+          console.log(res[dataLength - 1]);
         }
       })
       .catch(() => {

@@ -18,7 +18,7 @@ export const evaluateDiary = async (diary_text) => {
       {
         role: "assistant",
         content:
-          '出力は以下の形式のJSONで行ってください。```{    "feedback": "よく頑張ったね!",    "point": {        "study": 1,        "healthy": 2,        "sociality": 3,        "sociability": 4,        "mental": 5    }}```',
+          '出力は以下の形式のJSONで行ってください。```{    "feedback": "今日もよく頑張ったね!色々な人と話してて社会性がとても高いと思うよ！ただ、全然勉強してないよね？その状況で焦らないメンタルはすごいと思うよ。",    "point": {        "study": 1,        "healthy": 2,        "sociality": 3,        "sociability": 4,        "mental": 5    }}```',
       },
       {
         role: "user",
