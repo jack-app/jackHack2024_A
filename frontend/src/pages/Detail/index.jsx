@@ -66,7 +66,7 @@ function Detail() {
       <h2>フィードバック</h2>
       <h3>点数</h3>
 
-      <ResponsiveContainer width="90%" aspect={1.5}>
+      <ResponsiveContainer width="75%" aspect={1.5}>
         <RadarChart data={data}>
 
           <PolarGrid />
@@ -81,15 +81,17 @@ function Detail() {
           />
         </RadarChart>
       </ResponsiveContainer>
-
-      <div>
-        本日は合計15点で、もうちょっと努力が必要だぞ<br />
-        ・・・・<br />
-        特にここをやるともっといいかも！煽っちゃうよ。
+      <div className={style.container}>
+        <img src="aorichan.png" width="25%" aspect={1} />
+        <p>
+          本日は合計15点で、もうちょっと努力が必要だぞ<br />
+          ・・・・
+          特にここをやるともっといいかも！煽っちゃうよ。
+          </p>
       </div>
 
       <h3>ウィークリーサマリー</h3>
-      <ResponsiveContainer width="90%" aspect={2}>
+      <ResponsiveContainer width="75%" aspect={2}>
         <LineChart data={data2}>
           <XAxis dataKey="name" interval={0} />
           <YAxis domain={[0, 5]} tickCount={6} />
