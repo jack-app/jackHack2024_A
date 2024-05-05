@@ -27,11 +27,12 @@
   .login{
     width: 189px;
     height: 40px;
-    margin: auto;
+    margin: 20px auto;
     display: block;
     object-fit: contain;
     background-image: url(login.png);
     border-style: none;
+    background-repeat: no-repeat;
     background-color: #ffe4e4;
   }
 
