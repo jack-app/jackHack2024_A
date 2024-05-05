@@ -1,5 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+
+
+
+:root {
+  /* メインカラー */
+  --main-bg-color:#e8e7e7;
+  --main-dark-color: #6d1919;
+  --main-accent-color: #ff3d61;
+
+}
+
+
+
 .navigation {
   display: flex;
   flex-direction: row;
   gap: 16px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
