@@ -4,20 +4,20 @@ import style from "./index.module.css";
 function Write() {
   return (
     <div>
-       <Link to="/calendar">
-       <img src="back_button.png"></img>
-       </Link>
-      <div>20XX/XX</div>
-      <nav className={style.navigation}>
-        <Link to="/write">write</Link>
-        <Link to="/detail">detail</Link>
-        <Link to="/calendar">calendar</Link>
-        <Link to="/">home</Link>
-        <textarea></textarea>
-        <Link to="/calendar">
-        <img src="kakutei_bottom.png"></img>
-       </Link>
-      </nav>
+      <div className={style.flex}>
+        <Link className={style.flex} to="/calendar">
+          <img src="back_button.png"></img>
+        </Link>
+        <div className={style.flex}>20XX/XX</div>
+      </div>
+      <center>
+        <textarea className={style.inputbox}></textarea>
+          <div className={style.hoge}>
+        <Link className={style.submitbuttom} to="/detail">
+          <img src="kakutei_bottom.png"></img>
+        </Link>
+      </div>
+      </center>
     </div>
   );
 }
