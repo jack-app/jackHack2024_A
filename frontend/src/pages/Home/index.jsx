@@ -16,6 +16,14 @@ function Home() {
       <div>Your Stock</div>
       <div className={style.logo}><img src="logo.jpg"/></div>
       <button className={style.login}></button>
+      <div className="user_info">
+      <p className="user_name">
+        {loginUser ? loginUser.displayName : "ゲスト"}
+      </p>
+      <button className="login_btn" onClick={loginUser ? logout : login}>
+        {loginUser ? "logout" : "login"}
+      </button>
+    </div>
     </div>
   );
 }
