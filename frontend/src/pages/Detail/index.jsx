@@ -1,48 +1,69 @@
-import { Link } from "react-router-dom";
 import style from "./index.module.css";
-import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { ResponsiveContainer } from 'recharts';
-import RaderChartWrapper from "./components/RaderChart";
-import CommentWrapper from "./components/Comment";
-import FeedBackWrapper from "./components/FeedBack";
-
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+import { ResponsiveContainer } from "recharts";
+import RadarChartWrapper from "./components/RadarChart";
+import { AuthContextConsumer } from "../../contexts/AuthContext";
+import { getDiaryDataByDate } from "../../utils/database";
 
 const data2 = [
-  { name: '月', 勉強: 5, 健康: 2, 社会性: 0, 社交性: 1, 精神力: 4 },
-  { name: '火', 勉強: 4, 健康: 4, 社会性: 2, 社交性: 0, 精神力: 1 },
-  { name: '水', 勉強: 3, 健康: 1, 社会性: 4, 社交性: 1, 精神力: 1 },
-  { name: '木', 勉強: 1, 健康: 5, 社会性: 1, 社交性: 4, 精神力: 2 },
-  { name: '金', 勉強: 4, 健康: 2, 社会性: 5, 社交性: 3, 精神力: 3 },
-  { name: '土', 勉強: 0, 健康: 3, 社会性: 3, 社交性: 4, 精神力: 4 },
-  { name: '日', 勉強: 5, 健康: 4, 社会性: 1, 社交性: 5, 精神力: 3 },
+  { name: "月", 勉強: 5, 健康: 2, 社会性: 0, 社交性: 1, 精神力: 4 },
+  { name: "火", 勉強: 4, 健康: 4, 社会性: 2, 社交性: 0, 精神力: 1 },
+  { name: "水", 勉強: 3, 健康: 1, 社会性: 4, 社交性: 1, 精神力: 1 },
+  { name: "木", 勉強: 1, 健康: 5, 社会性: 1, 社交性: 4, 精神力: 2 },
+  { name: "金", 勉強: 4, 健康: 2, 社会性: 5, 社交性: 3, 精神力: 3 },
+  { name: "土", 勉強: 0, 健康: 3, 社会性: 3, 社交性: 4, 精神力: 4 },
+  { name: "日", 勉強: 5, 健康: 4, 社会性: 1, 社交性: 5, 精神力: 3 },
 ];
 
 function Detail() {
+  const { loginUser } = AuthContextConsumer();
+  const [data, setData] = useState({});
+  const [searchParams] = useSearchParams();
+  const date = searchParams.get("date");
+
+  useEffect(() => {
+    if (!loginUser || !date) return;
+    getDiaryDataByDate(loginUser.uid, date)
+      .then((res) => {
+        if (res.length === 0) {
+          setData([]);
+        } else {
+          setData(res[0]);
+          console.log(res[0]);
+        }
+      })
+      .catch(() => {
+        setData([]);
+      });
+  }, [loginUser, date]);
+
+  if (!data || !date) return <div>データがありません</div>;
 
   return (
     <div>
-      {/*
-      <div>Detail</div>
-      <nav className={style.navigation}>
-        <Link to="/write">write</Link>
-        <Link to="/detail">detail</Link>
-        <Link to="/calendar">calendar</Link>
-        <Link to="/">home</Link>
-      </nav>
-  */}
       <h2>日記</h2>
-
-      <CommentWrapper />
-
+      <div className={style.txtbox}>{data.diary_text}</div>
       <h2>フィードバック</h2>
       <h3>点数</h3>
       <div className={style.txtbox}>
-        <RaderChartWrapper/>
+        <RadarChartWrapper point={data.point} />
       </div>
-
-      <FeedBackWrapper />
-
+      <div className={style.container}>
+        <img src="aorichan.png" width="25%" height="25%" />
+        <div className={style.bubble}>
+          <p>{data.diary_feedback}</p>
+        </div>
+      </div>
       <h3>ウィークリーサマリー</h3>
       <div className={style.txtbox}>
         <ResponsiveContainer width="100%" aspect={2}>
@@ -59,10 +80,9 @@ function Detail() {
             <Line type="linear" dataKey="精神力" stroke="#8b008b" />
           </LineChart>
         </ResponsiveContainer>
-      </div> </div>
+      </div>{" "}
+    </div>
   );
 }
-
-
 
 export default Detail;
