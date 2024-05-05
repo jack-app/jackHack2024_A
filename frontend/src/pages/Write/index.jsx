@@ -4,8 +4,7 @@ import DecideButton from "./components/decide_button";
 import { useState } from "react";
 
 function Write() {
-
-  const [text, setText] = useState("")
+  const [text, setText] = useState("");
 
   return (
     <div>
@@ -16,19 +15,17 @@ function Write() {
         <div className={style.flex}></div>
       </div>
       <center>
-        <input className={style.inputbox}
+        <input
+          className={style.inputbox}
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
         <div className={style.hoge}>
-          <DecideButton text={text}/>
+          <DecideButton text={text} />
         </div>
       </center>
     </div>
   );
 }
-
-
-
 
 export default Write;
