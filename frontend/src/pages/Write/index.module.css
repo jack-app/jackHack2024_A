@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .navigation {
   display: flex;
   flex-direction: row;
@@ -22,3 +23,35 @@
 .flex{
   display: flex;
 }
+=======
+.navigation {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.inputbox {
+  display: block;
+    width: 350px;
+    height: 600px;
+    border-top-left-radius:16px;
+    border-top-right-radius:16px;
+    border-bottom-left-radius:16px;
+    border-bottom-right-radius:16px;
+}
+
+.submitbuttom {
+  display: block;
+}
+
+.hoge{
+  margin: 20px;
+}
+
+
+
+.flex{
+  display: flex;
+  padding: 10px;
+}
+>>>>>>> ebf7f2be423ab13fdc38166478d8e3f2d2dddfcc
