@@ -1,38 +1,9 @@
 import { Link } from "react-router-dom";
 import style from "./index.module.css";
 import React from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { ResponsiveContainer } from 'recharts';
-
-
-const data = [
-  {
-    subject: '勉強',
-    A: 4,
-    fullMark: 5,
-  },
-  {
-    subject: '健康',
-    A: 3,
-    fullMark: 5,
-  },
-  {
-    subject: '社会性',
-    A: 2,
-    fullMark: 5,
-  },
-  {
-    subject: '社交性',
-    A: 5,
-    fullMark: 5,
-  },
-  {
-    subject: '精神力',
-    A: 0,
-    fullMark: 5,
-  },
-];
+import RaderChartWrapper from "./components/RaderChart";
 
 
 const data2 = [
@@ -46,6 +17,7 @@ const data2 = [
 ];
 
 function Detail() {
+
   return (
     <div>
       {/*
@@ -67,27 +39,12 @@ function Detail() {
       <h2>フィードバック</h2>
       <h3>点数</h3>
       <div className={style.txtbox}>
-        <ResponsiveContainer width="100%" aspect={1.5}>
-          <RadarChart data={data}>
-
-            <PolarGrid />
-            <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis angle={90} domain={[0, 5]} tickCount={6} />
-            <Radar
-              name="chart"
-              dataKey="A"
-              stroke="#8884d8"
-              fill="#8884d8"
-              fillOpacity={0.6}
-            />
-          </RadarChart>
-        </ResponsiveContainer>
+        <RaderChartWrapper/>
       </div>
 
-
       <div className={style.container}>
-        <img src="aorichan.png" width="25%" aspect={1} />
-        <div class={style.bubble}>
+        <img className={style.circle} src="aorichan.png" width="25%"/>
+        <div className={style.bubble}>
           <p>
             本日は合計15点で、もうちょっと努力が必要だぞ<br />
             ・・・・<br />
@@ -115,5 +72,7 @@ function Detail() {
       </div> </div>
   );
 }
+
+
 
 export default Detail;

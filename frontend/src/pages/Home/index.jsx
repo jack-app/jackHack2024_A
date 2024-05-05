@@ -4,7 +4,7 @@ import { AuthContextConsumer } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 function Home() {
-  const { loginUser, login, logout } = AuthContextConsumer();
+  const { loginUser, userID, login, logout } = AuthContextConsumer();
   const navigate = useNavigate();
   useEffect(() => {
     if (loginUser) {
