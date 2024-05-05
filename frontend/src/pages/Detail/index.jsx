@@ -43,8 +43,8 @@ function Detail() {
       </div>
 
       <div className={style.container}>
-        <img src="aorichan.png" width="25%" aspect={1} />
-        <div class={style.bubble}>
+        <img className={style.circle} src="aorichan.png" width="25%"/>
+        <div className={style.bubble}>
           <p>
             本日は合計15点で、もうちょっと努力が必要だぞ<br />
             ・・・・<br />
