@@ -20,22 +20,22 @@ export default function RaderChartWrapper(){
       setData([
           {
             subject: '勉強',
-            A: target[0].healthy,
+            A: target[0].study,
             fullMark: 5,
           },
           {
             subject: '健康',
-            A: target[0].sociality,
+            A: target[0].healthy,
             fullMark: 5,
           },
           {
             subject: '社会性',
-            A: target[0].sociability,
+            A: target[0].sociality,
             fullMark: 5,
           },
           {
             subject: '社交性',
-            A: target[0].mental,
+            A: target[0].sociability,
             fullMark: 5,
           },
           {

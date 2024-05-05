@@ -1,22 +1,31 @@
 import { Link } from "react-router-dom";
 import style from "./index.module.css";
+import DecideButton from "./components/decide_button";
+import { useState } from "react";
 
 function Write() {
+
+  const [text, setText] = useState("")
+
+  const date = new Date().toLocaleDateString("ja-JP", {year: "numeric",month: "2-digit",
+  day: "2-digit"}).replaceAll('/', '-')
+
   return (
     <div>
       <div className={style.flex}>
         <Link className={style.flex} to="/calendar">
           <img src="back_button.png"></img>
         </Link>
-        <div className={style.flex}>20XX/XX</div>
+        <div className={style.flex}></div>
       </div>
       <center>
-        <textarea className={style.inputbox}></textarea>
-          <div className={style.hoge}>
-        <Link className={style.submitbuttom} to="/detail">
-          <img src="kakutei_bottom.png"></img>
-        </Link>
-      </div>
+        <input className={style.inputbox}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <div className={style.hoge}>
+          <DecideButton text={text} date={date}/>
+        </div>
       </center>
     </div>
   );

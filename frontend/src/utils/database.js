@@ -12,6 +12,7 @@ import {
 const createNewDiary = async (
   user_id,
   date,
+  study,
   healthy,
   sociality,
   sociability,
@@ -23,6 +24,7 @@ const createNewDiary = async (
   const newDiaryRef = push(diaryRef);
   set(newDiaryRef, {
     date,
+    study,
     healthy,
     sociality,
     sociability,
