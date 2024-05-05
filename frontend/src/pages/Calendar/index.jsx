@@ -10,7 +10,7 @@ function Calendar() {
 
   function modifyDate(date) {
     const currentDate = date || new Date();
-    const nextDayTimestamp = currentDate.getTime() + (24 * 60 * 60 * 1000);
+    const nextDayTimestamp = currentDate.getTime() + (9 * 60 * 60 * 1000);
     return new Date(nextDayTimestamp);
   }
   const handleDayClick = (date) => {
