@@ -6,9 +6,9 @@ import "react-calendar/dist/Calendar.css";  //カレンダーのCSS
 
 function Calendar() {
   const navigate = useNavigate();
-  const today = new Date().toLocaleDateString();
+  const today = new Date().toISOString().slice(0, 10);
   const handleDayClick = (date) => {
-    navigate(`/detail?date=${encodeURIComponent(date.toLocaleDateString())}`);
+    navigate(`/detail?date=${encodeURIComponent(date.toISOString().slice(0, 10))}`);
   };
   return (
     <div>
