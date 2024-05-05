@@ -10,24 +10,31 @@ function Calendar() {
 
   return (
     <div>
-      <h3>{today} 月間の状況だぞ</h3>
-      <RCalendar
-        value={value}
-        onClickDay={(e) => { setValue(e); console.log(e); }}
-      />
+      <h2 className={style.topDate}>{today}</h2>
+      <h2>月間の状況</h2>
+      <div className={style.RCalendarContainer}>
+        <RCalendar
+          value={value}
+          onClickDay={(e) => { setValue(e); console.log(e); }}
+        />
+      </div>
       <div>
-        <div>
-          <img src="aorichan.png" />
-          <p>扇のキャラクター アオリちゃん</p>
+        <div className={style.aorichanContainer}>
+          <img className={style.circle} src="aorichan.png" width="25%" />
+          <div className={style.bubble}>
+            <p>日記を書くぞ</p>
+          </div>
         </div>
-        <dir>
-          <p>日記を書くぞ</p>
-          <Link>
+        <span className={style.aorichanExplain}>扇のキャラクター アオリちゃん</span>
+        <div className={style.rightArrowIcon}>
+          <Link to={{
+            pathname: "/write",
+            state: { date: today }
+          }} >
             <img src="right-arrow-icon.svg" />
           </Link>
-        </dir>
+        </div>
       </div>
-
     </div>
   );
 }

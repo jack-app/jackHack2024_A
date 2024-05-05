@@ -9,7 +9,7 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Write" element={<Write />} />
+        <Route path="/write/:date" render={(props) => <Write {...props} />} />
         <Route path="/Detail" element={<Detail />} />
         <Route path="/Calendar" element={<Calendar />} />
       </Routes>
