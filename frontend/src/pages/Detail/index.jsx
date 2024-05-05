@@ -14,6 +14,7 @@ import { ResponsiveContainer } from "recharts";
 import RadarChartWrapper from "./components/RadarChart";
 import { AuthContextConsumer } from "../../contexts/AuthContext";
 import { getDiaryDataByDate } from "../../utils/database";
+import { Link } from "react-router-dom";
 
 const data2 = [
   { name: "月", 勉強: 5, 健康: 2, 社会性: 0, 社交性: 1, 精神力: 4 },
@@ -27,7 +28,8 @@ const data2 = [
 
 function Detail() {
   const { loginUser } = AuthContextConsumer();
-  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState([]);
   const [searchParams] = useSearchParams();
   const date = searchParams.get("date");
 
@@ -38,19 +40,44 @@ function Detail() {
         if (res.length === 0) {
           setData([]);
         } else {
-          setData(res[0]);
-          console.log(res[0]);
+          const dataLength = res.length;
+          setData(res[dataLength - 1]);
+          console.log(res[dataLength - 1]);
         }
       })
       .catch(() => {
         setData([]);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [loginUser, date]);
 
-  if (!data || !date) return <div>データがありません</div>;
+  if (isLoading) {
+    return <div>読み込み中...</div>;
+  }
+
+  if (!isLoading && data.length === 0) {
+    return (
+      <div>
+        <Link className={style.flex} to="/calendar">
+          <img src="back_button.png"></img>
+        </Link>
+        <div className={style.container}>
+          <img src="aorichan.png" width="25%" height="25%" />
+          <div className={style.bubble}>
+            <p>{date}のデータがありません。</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
+      <Link className={style.flex} to="/calendar">
+        <img src="back_button.png"></img>
+      </Link>
       <h2>日記</h2>
       <div className={style.txtbox}>{data.diary_text}</div>
       <h2>フィードバック</h2>
