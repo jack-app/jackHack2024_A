@@ -5,7 +5,7 @@ function Home() {
   return (
     <div>
       <div>Your Stock</div>
-      <div className="logo"><img src="logo.jpg"/></div>
+      <div className={style.logo}><img src="logo.jpg"/></div>
       
       
 <nav className={style.navigation}>
@@ -14,6 +14,8 @@ function Home() {
         <Link to="/calendar">ホーム</Link>
         <Link to="/">home</Link>
       </nav>
+      <button className={style.login}><img src="login.png"/></button>
+      
     </div>
   );
 }

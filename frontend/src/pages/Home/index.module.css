@@ -5,13 +5,19 @@
 }
 
 .logo{
-  margin: 0 auto;
-  display: block;
-}
-
-  img{
-  width: 60%;
+  width: 60px;
   margin: auto;
   display: block;
 }
 
+  img{
+  width: 100%;
+  
+  }
+
+  .login{
+    width: 150px;
+    margin: auto;
+    display: block;
+
+  }
