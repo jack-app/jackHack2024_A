@@ -52,14 +52,14 @@ export default function RaderChartWrapper(){
 <div className={style.overlap}>
         <img src="aorichan.png" width="100%" className={style.transparent}/>
         <div  className={style.overlay}>
-          <p><strong>⚠️データがありません⚠️</strong></p>
+          <p><strong>データがありません</strong></p>
         </div>
       </div>
     );
   }
 
   return(
-    <ResponsiveContainer width="75%" aspect={1.5}>
+    <ResponsiveContainer width="100%" aspect={1.5}>
       <RadarChart data={data}>
 
         <PolarGrid />

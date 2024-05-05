@@ -19,7 +19,11 @@ const data2 = [
 function Detail() {
 
   return (
+
+
+
     <div>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       {/*
       <div>Detail</div>
       <nav className={style.navigation}>
@@ -29,6 +33,8 @@ function Detail() {
         <Link to="/">home</Link>
       </nav>
   */}
+
+
       <h2>日記</h2>
 
       <div className={style.txtbox}>
@@ -36,40 +42,52 @@ function Detail() {
         パスが通らなくて腹が立ちました。
       </div>
 
-      <h2>フィードバック</h2>
-      <h3>点数</h3>
-      <div className={style.txtbox}>
-        <RaderChartWrapper/>
-      </div>
 
-      <div className={style.container}>
-        <img className={style.circle} src="aorichan.png" width="25%"/>
-        <div className={style.bubble}>
-          <p>
-            本日は合計15点で、もうちょっと努力が必要だぞ<br />
-            ・・・・<br />
-            特にここをやるともっといいかも！煽っちゃうよ。
-          </p>
+      <h2>フィードバック</h2>
+      <div className={style.responsiveParent}>
+        <div className={style.responsiveChild1}>
+
+          <h3>点数</h3>
+          <div className={style.txtbox}>
+            <RaderChartWrapper />
+          </div>
+
+
+        </div>
+
+        <div className={style.responsiveChild2}>
+
+          <div className={style.container}>
+            <img className={style.circle} src="aorichan.png" width="25%" />
+            <div className={style.bubble}>
+              <p>
+                本日は合計15点で、もうちょっと努力が必要だぞ<br />
+                ・・・・<br />
+                特にここをやるともっといいかも！煽っちゃうよ。
+              </p>
+            </div>
+          </div>
+
+          <h3>ウィークリーサマリー</h3>
+          <div className={style.txtbox}>
+            <ResponsiveContainer width="100%" aspect={2}>
+              <LineChart data={data2}>
+                <XAxis dataKey="name" interval={0} />
+                <YAxis domain={[0, 5]} tickCount={6} />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip />
+                <Legend />
+                <Line type="linear" dataKey="勉強" stroke="#191970" />
+                <Line type="linear" dataKey="健康" stroke="#ffa500" />
+                <Line type="linear" dataKey="社会性" stroke="#008000" />
+                <Line type="linear" dataKey="社交性" stroke="#7f99d4" />
+                <Line type="linear" dataKey="精神力" stroke="#8b008b" />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
-
-      <h3>ウィークリーサマリー</h3>
-      <div className={style.txtbox}>
-        <ResponsiveContainer width="100%" aspect={2}>
-          <LineChart data={data2}>
-            <XAxis dataKey="name" interval={0} />
-            <YAxis domain={[0, 5]} tickCount={6} />
-            <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip />
-            <Legend />
-            <Line type="linear" dataKey="勉強" stroke="#191970" />
-            <Line type="linear" dataKey="健康" stroke="#ffa500" />
-            <Line type="linear" dataKey="社会性" stroke="#008000" />
-            <Line type="linear" dataKey="社交性" stroke="#7f99d4" />
-            <Line type="linear" dataKey="精神力" stroke="#8b008b" />
-          </LineChart>
-        </ResponsiveContainer>
-      </div> </div>
+    </div>
   );
 }
 
