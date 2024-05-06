@@ -50,7 +50,7 @@ h3 {
   background-color: var(--dark-color);
   color: var(--txt-bg);
   padding-left: 10px;
-  /* 枠線とテキストの間に余白を追加 */
+  margin-top: 10px;
 }
 
 .navigation {
