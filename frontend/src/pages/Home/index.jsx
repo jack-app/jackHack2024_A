@@ -14,14 +14,15 @@ function Home() {
   return (
     <div>
       <div>Your Stock</div>
-      <div className={style.logo}><img src="logo.jpg"/></div>
-    <button className={style.gsiMaterialButton} onClick={loginUser ? logout : login}>
-  <div className={style.gsiMaterialButtonState}></div>
-  <div className={style.gsiMaterialButtonContentWrapper}>
-    <div className={style.gsiMaterialButtonIcon}>
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" xmlnsXlink="http://www.w3.org/1999/xlink" style={{ display: 'block' }}>
- 
-  <path fill="#EA4335" d={`
+      <div className={style.logo}><img src="logo.jpg" /></div>
+      <div className={style.centered}>
+        <button className={style.gsiMaterialButton} onClick={loginUser ? logout : login}>
+          <div className={style.gsiMaterialButtonState}></div>
+          <div className={style.gsiMaterialButtonContentWrapper}>
+            <div className={style.gsiMaterialButtonIcon}>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" xmlnsXlink="http://www.w3.org/1999/xlink" style={{ display: 'block' }}>
+
+                <path fill="#EA4335" d={`
     M24 9.5
     c3.54 0 6.71 1.22 9.21 3.6
     l6.85 -6.85
@@ -32,7 +33,7 @@ function Home() {
     z
   `} />
 
-  <path fill="#4285F4" d={`
+                <path fill="#4285F4" d={`
     M46.98 24.55
     c0 -1.57 -0.15 -3.09 -0.38 -4.55
     H24
@@ -44,7 +45,7 @@ function Home() {
     z
   `} />
 
-  <path fill="#FBBC05" d={`
+                <path fill="#FBBC05" d={`
     M10.53 28.59
     c-0.48 -1.45 -0.76 -2.99 -0.76 -4.59
     s0.27 -3.14 0.76 -4.59
@@ -55,7 +56,7 @@ function Home() {
     z
   `} />
 
-  <path fill="#34A853" d={`
+                <path fill="#34A853" d={`
     M24 48
     c6.48 0 11.93 -2.13 15.89 -5.81
     l-7.73 -6
@@ -66,20 +67,22 @@ function Home() {
     z
   `} />
 
-  <path fill="none" d={`
+                <path fill="none" d={`
     M0 0
     h48
     v48
     H0
     z
   `} />
-</svg>
+              </svg>
 
-    </div>
-    <span className={style.gsiMaterialButtonContents}>Googleでログイン</span>
-    <span style={{ display: 'none' }}>Sign in with Google</span>
-  </div>
-</button>
+            </div>
+            <span className={style.gsiMaterialButtonContents}>Googleでログイン</span>
+            <span style={{ display: 'none' }}>Sign in with Google</span>
+          </div>
+        </button>
+      </div>
+
     </div>
   );
 }
