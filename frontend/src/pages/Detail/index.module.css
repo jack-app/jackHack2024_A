@@ -47,8 +47,8 @@ body {
 
 h2,
 h3 {
-  background-color: var(--txt-bg);
-  border-left: 5px solid var(--dark-color);
+  background-color: var(--dark-color);
+  color: var(--txt-bg);
   padding-left: 10px;
   /* 枠線とテキストの間に余白を追加 */
 }
