@@ -19,18 +19,20 @@ export function LineChartWrapper(data){
         return point.study + point.healthy + point.sociality + point.sociability + point.mental
     }
 
+    console.log(data)
+
     const data_ls = [
         {
-            "date": moment(data[0].date).unix() * 1000,
-            "point": 100 - TIME_DECRESE + point_caliculater(data[0].point)
+            "date": moment(data.data[0].date).unix() * 1000,
+            "point": 100 - TIME_DECRESE + point_caliculater(data.data[0].point)
         }
     ];
 
     for(let i=1; i < data.length; i++){
         data_ls.push(
             {
-                "date": moment(data[i].date).unix() * 1000,
-                "point": data_ls[data_ls.length - 1].point - TIME_DECRESE + point_caliculater(data[i].point)
+                "date": moment(data.data[i].date).unix() * 1000,
+                "point": data_ls[data_ls.length - 1].point - TIME_DECRESE + point_caliculater(data.data[i].point)
             }
         )
     }
