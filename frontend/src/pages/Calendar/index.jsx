@@ -21,7 +21,7 @@ function Calendar() {
 
   return (
     <div>
-      <h2 className={style.topDate}>{formattedDate}</h2>
+      <h1 className={style.topDate}>{formattedDate}</h1>
       <h2>月間の状況</h2>
       <div className={style.RCalendarContainer}>
         <RCalendar onClickDay={(date) => handleDayClick(date)} />
