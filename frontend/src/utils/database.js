@@ -16,14 +16,33 @@ const createNewDiary = async (
   diary_text,
   diary_feedback
 ) => {
-  const diaryRef = ref(db, `diary/${user_id}`);
-  const newDiaryRef = push(diaryRef);
-  set(newDiaryRef, {
-    date: date,
-    diary_text: diary_text,
-    diary_feedback: diary_feedback,
-    point: point
-  });
+  const queryRef = query(
+    ref(db, `diary/${user_id}`),
+    orderByChild("date"),
+    equalTo(date)
+  );
+  const snapshot = await get(queryRef);
+
+  if (snapshot.exists()) {
+    const allDiaries = Object.keys(snapshot.val());
+    const lastDiaryKey = allDiaries[allDiaries.length - 1];
+    const diaryRef = ref(db, `diary/${user_id}/${lastDiaryKey}`);
+    set(diaryRef, {
+      date: date,
+      diary_text: diary_text,
+      diary_feedback: diary_feedback,
+      point: point,
+    });
+  } else {
+    const diaryRef = ref(db, `diary/${user_id}`);
+    const newDiaryRef = push(diaryRef);
+    set(newDiaryRef, {
+      date: date,
+      diary_text: diary_text,
+      diary_feedback: diary_feedback,
+      point: point,
+    });
+  }
 };
 
 const getAllDiary = async (user_id) => {
