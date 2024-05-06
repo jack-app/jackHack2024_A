@@ -1,35 +1,17 @@
 import style from "./index.module.css";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
-import { ResponsiveContainer } from "recharts";
 import RadarChartWrapper from "./components/RadarChart";
 import { AuthContextConsumer } from "../../contexts/AuthContext";
-import { getDiaryDataByDate } from "../../utils/database";
+import { getAllDiary, getDiaryDataByDate } from "../../utils/database";
 import { Link } from "react-router-dom";
-
-const data2 = [
-  { name: "月", 勉強: 5, 健康: 2, 社会性: 0, 社交性: 1, 精神力: 4 },
-  { name: "火", 勉強: 4, 健康: 4, 社会性: 2, 社交性: 0, 精神力: 1 },
-  { name: "水", 勉強: 3, 健康: 1, 社会性: 4, 社交性: 1, 精神力: 1 },
-  { name: "木", 勉強: 1, 健康: 5, 社会性: 1, 社交性: 4, 精神力: 2 },
-  { name: "金", 勉強: 4, 健康: 2, 社会性: 5, 社交性: 3, 精神力: 3 },
-  { name: "土", 勉強: 0, 健康: 3, 社会性: 3, 社交性: 4, 精神力: 4 },
-  { name: "日", 勉強: 5, 健康: 4, 社会性: 1, 社交性: 5, 精神力: 3 },
-];
+import { LineChartWrapper } from "./components/LineChart";
 
 function Detail() {
   const { loginUser } = AuthContextConsumer();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [alldata, setAllData] = useState([]);
   const [searchParams] = useSearchParams();
   const date = searchParams.get("date");
 
@@ -48,9 +30,21 @@ function Detail() {
       .catch(() => {
         setData([]);
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
+
+      getAllDiary(loginUser.uid)
+        .then((res) => {
+          if (res.length === 0) {
+            setAllData([]);
+          } else {
+            setAllData(res);
+          }  
+        })
+        .catch(() => {
+          setData([]);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
   }, [loginUser, date]);
 
   if (isLoading) {
@@ -96,10 +90,7 @@ function Detail() {
       <h2>日記</h2>
       <div className={style.txtbox}>{data.diary_text}</div>
 
-
-
       <h2>フィードバック</h2>
-
 
       <div className={style.responsiveParent}>
         <div className={style.responsiveChild1}>
@@ -117,22 +108,7 @@ function Detail() {
             </div>
           </div>
           <h3>ウィークリーサマリー</h3>
-          <div className={style.txtbox}>
-            <ResponsiveContainer width="100%" aspect={2}>
-              <LineChart data={data2}>
-                <XAxis dataKey="name" interval={0} />
-                <YAxis domain={[0, 5]} tickCount={6} />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                <Legend />
-                <Line type="linear" dataKey="勉強" stroke="#191970" />
-                <Line type="linear" dataKey="健康" stroke="#ffa500" />
-                <Line type="linear" dataKey="社会性" stroke="#008000" />
-                <Line type="linear" dataKey="社交性" stroke="#7f99d4" />
-                <Line type="linear" dataKey="精神力" stroke="#8b008b" />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
+          <LineChartWrapper data={alldata}/>
         </div>
       </div>
     </div>
