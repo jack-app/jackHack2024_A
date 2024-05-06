@@ -7,11 +7,12 @@
 .inputbox {
   display: block;
     width: 350px;
-    height: 600px;
+    height: 300px;
     border-top-left-radius:16px;
     border-top-right-radius:16px;
     border-bottom-left-radius:16px;
     border-bottom-right-radius:16px;
+    font-size: 130%;
 }
 
 .submitbuttom {
