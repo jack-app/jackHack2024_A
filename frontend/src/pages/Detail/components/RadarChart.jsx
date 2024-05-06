@@ -9,10 +9,16 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 import { ResponsiveContainer } from "recharts";
+import style from "./../index.module.css";
 
 // eslint-disable-next-line react/prop-types
 export default function RadarChartWrapper({ point }) {
-  if (!point) return <div>データがありません</div>;
+  if (!point) return <div className={style.overlap}>
+    <img src="aorichan.png" width="100%" className={style.transparent} />
+    <div className={style.overlay}>
+      <p><strong>データがありません</strong></p>
+    </div>
+  </div>;
   const data = [
     {
       subject: "勉強",
@@ -42,7 +48,7 @@ export default function RadarChartWrapper({ point }) {
   ];
 
   return (
-    <ResponsiveContainer width="75%" aspect={1.5}>
+    <ResponsiveContainer width="100%" aspect={1}>
       <RadarChart data={data}>
         <PolarGrid />
         <PolarAngleAxis dataKey="subject" />

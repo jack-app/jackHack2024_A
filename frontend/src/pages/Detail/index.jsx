@@ -74,40 +74,67 @@ function Detail() {
   }
 
   return (
+
+
+
     <div>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      {/*
+      <div>Detail</div>
+      <nav className={style.navigation}>
+        <Link to="/write">write</Link>
+        <Link to="/detail">detail</Link>
+        <Link to="/calendar">calendar</Link>
+        <Link to="/">home</Link>
+      </nav>
+  */}
+
+
       <Link className={style.flex} to="/calendar">
         <img src="back_button.png"></img>
       </Link>
       <h2>日記</h2>
       <div className={style.txtbox}>{data.diary_text}</div>
+
+
+
       <h2>フィードバック</h2>
-      <h3>点数</h3>
-      <div className={style.txtbox}>
-        <RadarChartWrapper point={data.point} />
-      </div>
-      <div className={style.container}>
-        <img src="aorichan.png" width="25%" height="25%" />
-        <div className={style.bubble}>
-          <p>{data.diary_feedback}</p>
+
+
+      <div className={style.responsiveParent}>
+        <div className={style.responsiveChild1}>
+
+          <h3>点数</h3>
+          <div className={style.txtbox}>
+            <RadarChartWrapper point={data.point} />
+          </div>
+        </div>
+        <div className={style.responsiveChild2}>
+          <div className={style.container}>
+            <img src="aorichan.png" width="25%" className={style.circle}/>
+            <div className={style.bubble}>
+              <p>{data.diary_feedback}</p>
+            </div>
+          </div>
+          <h3>ウィークリーサマリー</h3>
+          <div className={style.txtbox}>
+            <ResponsiveContainer width="100%" aspect={2}>
+              <LineChart data={data2}>
+                <XAxis dataKey="name" interval={0} />
+                <YAxis domain={[0, 5]} tickCount={6} />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip />
+                <Legend />
+                <Line type="linear" dataKey="勉強" stroke="#191970" />
+                <Line type="linear" dataKey="健康" stroke="#ffa500" />
+                <Line type="linear" dataKey="社会性" stroke="#008000" />
+                <Line type="linear" dataKey="社交性" stroke="#7f99d4" />
+                <Line type="linear" dataKey="精神力" stroke="#8b008b" />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
-      <h3>ウィークリーサマリー</h3>
-      <div className={style.txtbox}>
-        <ResponsiveContainer width="100%" aspect={2}>
-          <LineChart data={data2}>
-            <XAxis dataKey="name" interval={0} />
-            <YAxis domain={[0, 5]} tickCount={6} />
-            <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip />
-            <Legend />
-            <Line type="linear" dataKey="勉強" stroke="#191970" />
-            <Line type="linear" dataKey="健康" stroke="#ffa500" />
-            <Line type="linear" dataKey="社会性" stroke="#008000" />
-            <Line type="linear" dataKey="社交性" stroke="#7f99d4" />
-            <Line type="linear" dataKey="精神力" stroke="#8b008b" />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>{" "}
     </div>
   );
 }
