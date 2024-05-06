@@ -22,9 +22,7 @@ function Detail() {
         if (res.length === 0) {
           setData([]);
         } else {
-          const dataLength = res.length;
-          setData(res[dataLength - 1]);
-          console.log(res[dataLength - 1]);
+          setData(res[0]);
         }
       })
       .catch(() => {
@@ -68,9 +66,6 @@ function Detail() {
   }
 
   return (
-
-
-
     <div>
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       {/*
@@ -83,7 +78,6 @@ function Detail() {
       </nav>
   */}
 
-
       <Link className={style.flex} to="/calendar">
         <img src="back_button.png"></img>
       </Link>
@@ -94,7 +88,6 @@ function Detail() {
 
       <div className={style.responsiveParent}>
         <div className={style.responsiveChild1}>
-
           <h3>点数</h3>
           <div className={style.txtbox}>
             <RadarChartWrapper point={data.point} />
@@ -102,7 +95,7 @@ function Detail() {
         </div>
         <div className={style.responsiveChild2}>
           <div className={style.container}>
-            <img src="aorichan.png" width="25%" className={style.circle}/>
+            <img src="aorichan.png" width="25%" className={style.circle} />
             <div className={style.bubble}>
               <p>{data.diary_feedback}</p>
             </div>

@@ -25,7 +25,7 @@ const createNewDiary = async (
 
   if (snapshot.exists()) {
     const allDiaries = Object.keys(snapshot.val());
-    const lastDiaryKey = allDiaries[allDiaries.length - 1];
+    const lastDiaryKey = allDiaries[0];
     const diaryRef = ref(db, `diary/${user_id}/${lastDiaryKey}`);
     set(diaryRef, {
       date: date,
@@ -52,7 +52,18 @@ const getAllDiary = async (user_id) => {
   const data = snapshot.val();
   if (data) {
     const dataArr = Object.values(data);
-    return dataArr;
+
+    // 同じ日付のデータがある場合は最初のデータのみを残す
+    const uniqueData = dataArr.reduce((acc, current) => {
+      const x = acc.find((item) => item.date === current.date);
+      if (!x) {
+        return acc.concat([current]);
+      } else {
+        return acc;
+      }
+    }, []);
+
+    return uniqueData;
   } else {
     return [];
   }
