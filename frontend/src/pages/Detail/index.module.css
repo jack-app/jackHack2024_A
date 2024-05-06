@@ -23,11 +23,14 @@
 /* h2とh3の前後のマージンを狭くする */
 h2,
 h3 {
-  margin-top: 0.25em;
+  margin-top: 1em;
   /* 上側のマージン */
   margin-bottom: 0.25em;
   /* 下側のマージン */
-}
+    background-color: var(--dark-color);
+    color: var(--txt-bg);
+    padding-left: 10px;
+  }
 
 :root {
   /* メインカラー */
@@ -45,13 +48,7 @@ body {
   color: var(--dark-color);
 }
 
-h2,
-h3 {
-  background-color: var(--dark-color);
-  color: var(--txt-bg);
-  padding-left: 10px;
-  margin-top: 10px;
-}
+
 
 .navigation {
   display: flex;
@@ -80,8 +77,6 @@ h3 {
   background-color: var(--txt-bg);
   /* 吹き出しの背景色 */
   border: 2px solid var(--dark-color);
-  padding: 10px;
-  /* 吹き出しの内側の余白 */
   border-radius: 10px;
   /* 吹き出しの角を丸める */
   box-sizing: border-box;
