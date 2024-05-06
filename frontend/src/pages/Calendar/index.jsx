@@ -1,30 +1,26 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "./index.module.css";
-import RCalendar from "react-calendar";
+import RCalendar from "./Components/RCalendar";
 import "react-calendar/dist/Calendar.css";
 
 function Calendar() {
-  const navigate = useNavigate();
+
   const today = modifyDate(new Date());
   const formattedDate = today.toISOString().slice(0, 10);
 
   function modifyDate(date) {
     const currentDate = date || new Date();
-    const nextDayTimestamp = currentDate.getTime() + (9 * 60 * 60 * 1000);
+    const nextDayTimestamp = currentDate;
     return new Date(nextDayTimestamp);
   }
-  const handleDayClick = (date) => {
-    const modifiedDate = modifyDate(date);
-    const formattedSelectedDate = modifiedDate.toISOString().slice(0, 10);
-    navigate(`/detail?date=${encodeURIComponent(formattedSelectedDate)}`);
-  };
+
 
   return (
     <div>
       <h1 className={style.topDate}>{formattedDate}</h1>
       <h2>月間の状況</h2>
       <div className={style.RCalendarContainer}>
-        <RCalendar onClickDay={(date) => handleDayClick(date)} />
+        <RCalendar />
       </div>
       <div>
         <div className={style.aorichanContainer}>
