@@ -48,7 +48,7 @@ export default function RadarChartWrapper({ point }) {
   ];
 
   return (
-    <ResponsiveContainer width="100%" aspect={1}>
+    <ResponsiveContainer width="100%" aspect={1.25}>
       <RadarChart data={data}>
         <PolarGrid />
         <PolarAngleAxis dataKey="subject" />
