@@ -15,11 +15,12 @@ function Write() {
         <div className={style.flex}></div>
       </div>
       <center>
-        <input
+        <textarea
+          placeholder="日記を入力"
           className={style.inputbox}
           value={text}
           onChange={(e) => setText(e.target.value)}
-        />
+        ></textarea>
         <div className={style.hoge}>
           <DecideButton text={text} />
         </div>
