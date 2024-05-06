@@ -10,7 +10,7 @@ function Calendar() {
 
   function modifyDate(date) {
     const currentDate = date || new Date();
-    const nextDayTimestamp = currentDate.getTime() + (9 * 60 * 60 * 1000);
+    const nextDayTimestamp = currentDate.getTime() + 9 * 60 * 60 * 1000;
     return new Date(nextDayTimestamp);
   }
   const handleDayClick = (date) => {
@@ -33,10 +33,12 @@ function Calendar() {
             <p>日記を書くぞ</p>
           </div>
         </div>
-        <span className={style.aorichanExplain}>扇のキャラクター アオリちゃん</span>
-        <div className={style.rightArrowIcon}>
+        <span className={style.aorichanExplain}>
+          扇のキャラクター アオリちゃん
+        </span>
+        <div className={style.link}>
           <Link to={`/write?date=${encodeURIComponent(formattedDate)}`}>
-            <img src="right-arrow-icon.svg" />
+            日記を書く
           </Link>
         </div>
       </div>
