@@ -111,27 +111,35 @@ function Detail() {
         </div>
         <div className={style.responsiveChild2}>
           <div className={style.container}>
-            <img src="aorichan.png" width="25%" className={style.circle}/>
+            <img src="aorichan.png" width="25%" className={style.circle} />
             <div className={style.bubble}>
               <p>{data.diary_feedback}</p>
             </div>
           </div>
           <h3>ウィークリーサマリー</h3>
           <div className={style.txtbox}>
-            <ResponsiveContainer width="100%" aspect={2}>
-              <LineChart data={data2}>
-                <XAxis dataKey="name" interval={0} />
-                <YAxis domain={[0, 5]} tickCount={6} />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                <Legend />
-                <Line type="linear" dataKey="勉強" stroke="#191970" />
-                <Line type="linear" dataKey="健康" stroke="#ffa500" />
-                <Line type="linear" dataKey="社会性" stroke="#008000" />
-                <Line type="linear" dataKey="社交性" stroke="#7f99d4" />
-                <Line type="linear" dataKey="精神力" stroke="#8b008b" />
-              </LineChart>
-            </ResponsiveContainer>
+            <div style={{ width: '100%', marginLeft: '-20px' }}>
+              <ResponsiveContainer width="100%" aspect={2}>
+                <LineChart data={data2}>
+                  <XAxis dataKey="name" interval={0} fontSize={10}/>
+                  <YAxis domain={[0, 5]} tickCount={6} fontSize={10}/>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip />
+                  <Legend
+        formatter={(value, entry, index) => (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <span style={{ marginLeft: '20px', fontSize: '10px'}}>{value}</span>
+          </div>
+        )}
+      />
+                  <Line type="linear" dataKey="勉強" stroke="#191970" />
+                  <Line type="linear" dataKey="健康" stroke="#ffa500" />
+                  <Line type="linear" dataKey="社会性" stroke="#008000" />
+                  <Line type="linear" dataKey="社交性" stroke="#7f99d4" />
+                  <Line type="linear" dataKey="精神力" stroke="#8b008b" />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
       </div>

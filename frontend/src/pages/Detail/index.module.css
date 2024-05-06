@@ -65,7 +65,6 @@ body {
 
 .txtbox {
   background-color: var(--txt-bg);
-  padding: 10px;
   border: 2px solid var(--dark-color);
   justify-content: center;
 }
