@@ -13,7 +13,7 @@ import moment from "moment";
 
 export function LineChartWrapper(data){
 
-    const TIME_DECRESE = 15
+    const TIME_DECRESE = 30
 
     const point_caliculater = (point) => {
         return point.study + point.healthy + point.sociality + point.sociability + point.mental
@@ -28,7 +28,7 @@ export function LineChartWrapper(data){
         }
     ];
 
-    for(let i=1; i < data.length; i++){
+    for(let i=1; i < data.data.length; i++){
         data_ls.push(
             {
                 "date": moment(data.data[i].date).unix() * 1000,
@@ -37,14 +37,17 @@ export function LineChartWrapper(data){
         )
     }
 
-    <div className={style.txtbox}>
+    console.log(data_ls);
+
+    return(
+        <div className={style.txtbox}>
         <ResponsiveContainer width="100%" aspect={2}>
             <LineChart data={data_ls}>
             <XAxis // X軸
                 dataKey="date" // X軸の基準となるデータ項目名
                 tickFormatter={(props) => moment(props).format('YYYY/MM/DD')} // X軸を YYYY/MM/DD 形式で表示します
             />
-            <YAxis domain={[0, data_ls.length]} />
+            <YAxis domain={[0, 200]} />
             <CartesianGrid strokeDasharray="3 3" />
             <Tooltip />
             <Legend />
@@ -52,4 +55,5 @@ export function LineChartWrapper(data){
         </LineChart>
         </ResponsiveContainer>
     </div>
+    )
 }
