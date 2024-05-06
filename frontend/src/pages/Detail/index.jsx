@@ -27,22 +27,22 @@ function Detail() {
       })
       .catch(() => {
         setData([]);
-      })
+      });
 
-      getAllDiary(loginUser.uid)
-        .then((res) => {
-          if (res.length === 0) {
-            setAllData([]);
-          } else {
-            setAllData(res);
-          }  
-        })
-        .catch(() => {
-          setData([]);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+    getAllDiary(loginUser.uid)
+      .then((res) => {
+        if (res.length === 0) {
+          setAllData([]);
+        } else {
+          setAllData(res);
+        }
+      })
+      .catch(() => {
+        setData([]);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [loginUser, date]);
 
   if (isLoading) {
@@ -100,8 +100,8 @@ function Detail() {
               <p>{data.diary_feedback}</p>
             </div>
           </div>
-          <h3>ウィークリーサマリー</h3>
-          <LineChartWrapper data={alldata}/>
+          <h3>あなたの価値の推移</h3>
+          <LineChartWrapper data={alldata} />
         </div>
       </div>
     </div>
