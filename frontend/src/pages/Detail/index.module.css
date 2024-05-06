@@ -1,6 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
 
 
+@media screen and (min-width: 481px) {
+  .responsiveParent {
+    display: flex;
+    width: 100%;
+  }
+
+  .responsiveChild1 {
+    width: 50%;
+    padding-right: 1%;
+  }
+
+  .responsiveChild2 {
+    width: 50%;
+    padding-left: 1%;
+  }
+}
+
+@media screen and (max-width: 480px) {}
+
+/* h2とh3の前後のマージンを狭くする */
+h2,
+h3 {
+  margin-top: 0.25em;
+  /* 上側のマージン */
+  margin-bottom: 0.25em;
+  /* 下側のマージン */
+}
 
 :root {
   /* メインカラー */
@@ -20,8 +47,8 @@ body {
 
 h2,
 h3 {
-  background-color: var(--txt-bg);
-  border-left: 5px solid var(--dark-color);
+  background-color: var(--dark-color);
+  color: var(--txt-bg);
   padding-left: 10px;
   /* 枠線とテキストの間に余白を追加 */
 }
@@ -92,12 +119,29 @@ h3 {
   position: relative;
 }
 
-.overlay {
-  position: absolute;
-  text-align: center;
-  top: 45%; /* 上端を画面の50%に設定 */
-  width: 100%;
-  font-size: 5vw; 
+@media screen and (min-width: 481px) {
+  .overlay {
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    /* 上端を画面の50%に設定 */
+    width: 100%;
+
+
+    font-size: 3vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .overlay {
+    position: absolute;
+    text-align: center;
+    top: 35%;
+    /* 上端を画面の50%に設定 */
+    width: 100%;
+
+    font-size: 8vw;
+  }
 }
 
 .circle {
