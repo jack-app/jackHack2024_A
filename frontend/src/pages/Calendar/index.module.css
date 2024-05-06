@@ -1,5 +1,69 @@
-.navigation {
+.topDate {
+  background-color: none;
+  border-left: none;
+  padding-left: none;
+  background: none;
+}
+
+.RCalendarContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.aorichanContainer {
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  align-items: center;
+    margin-top: 20px;
+  }
+  
+  .circle {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--dark-color);
+  }
+  
+  .bubble {
+    margin-left: 5%;
+    width: 70%;
+    position: relative;
+    background-color: var(--txt-bg);
+    /* 吹き出しの背景色 */
+    border: 2px solid var(--dark-color);
+    padding: 10px;
+    /* 吹き出しの内側の余白 */
+    border-radius: 10px;
+    /* 吹き出しの角を丸める */
+    box-sizing: border-box;
+    /* 幅にborderとpaddingを含める */
+  }
+  
+  .bubble:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    margin-top: -12px;
+    border: 12px solid transparent;
+    border-right: 15px solid var(--txt-bg);
+    z-index: 2;
+  }
+  
+  .bubble:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -13px;
+    border: 13px solid transparent;
+    border-right: 16px solid var(--dark-color);
+    z-index: 1;
+  }
+  
+  .aorichanExplain {
+    font-size: 0.9rem;
+}
+
+.rightArrowIcon {
+  float: right;
 }
